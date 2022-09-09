@@ -23,3 +23,9 @@ logging:
   level:
     org.springframework.orm.jpa: DEBUG
     org.springframework.transaction: DEBUG
+
+jwt:
+  access-token-valid-time: ${JWT_ACCESS_TIME}
+  prefix: Bearer
+  header: Authorization
+  secret-key: ${JWT_SECRET}
