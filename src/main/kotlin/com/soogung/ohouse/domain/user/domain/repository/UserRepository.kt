@@ -11,4 +11,7 @@ interface UserRepository: JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u WHERE u.email = :email")
     fun findUserByEmail(email: String): User?
+
+    @Query("SELECT count(u) > 0 FROM User u WHERE u.email = :email")
+    fun existsUserByEmail(email: String): Boolean
 }

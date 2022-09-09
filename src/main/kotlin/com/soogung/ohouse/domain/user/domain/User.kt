@@ -8,7 +8,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "user_tbl")
 class User(
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, unique = true)
     var email: String,
 
     @Column(length = 60, nullable = false)
