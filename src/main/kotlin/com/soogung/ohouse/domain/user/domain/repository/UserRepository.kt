@@ -1,6 +1,6 @@
-package com.soogung.ohouse.user.domain.repository
+package com.soogung.ohouse.domain.user.domain.repository
 
-import com.soogung.ohouse.user.domain.User
+import com.soogung.ohouse.domain.user.domain.User
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 

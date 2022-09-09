@@ -1,7 +1,7 @@
-package com.soogung.ohouse.user.service
+package com.soogung.ohouse.domain.user.service
 
-import com.soogung.ohouse.user.domain.repository.UserRepository
-import com.soogung.ohouse.user.presentation.dto.request.JoinUserRequest
+import com.soogung.ohouse.domain.user.domain.repository.UserRepository
+import com.soogung.ohouse.domain.user.presentation.dto.request.JoinUserRequest
 import org.springframework.stereotype.Service
 
 @Service

@@ -1,4 +1,4 @@
-package com.soogung.ohouse.user.domain.type
+package com.soogung.ohouse.domain.user.domain.type
 
 enum class UserGrade(val accumulateRatio: Double) {
     NORMAL(0.0),
