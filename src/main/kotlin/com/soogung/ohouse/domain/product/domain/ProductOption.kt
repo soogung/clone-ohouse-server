@@ -6,7 +6,7 @@ import javax.persistence.*
 @Table(name = "tbl_product_option")
 class ProductOption(
     @Column(length = 40, nullable = false)
-    var option: String,
+    var name: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)

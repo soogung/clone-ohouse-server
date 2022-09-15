@@ -14,7 +14,7 @@ data class ProductOptionRequest(
 ) {
     fun toEntity(product: Product): ProductOption {
         return ProductOption(
-            option = option,
+            name = option,
             product = product
         )
     }
