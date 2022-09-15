@@ -2,6 +2,7 @@ package com.soogung.ohouse.global.security.auth
 
 import com.soogung.ohouse.domain.user.domain.User
 import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
 class AuthDetails(
@@ -9,7 +10,7 @@ class AuthDetails(
 ): UserDetails {
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
-        return mutableListOf("ROLE_USER" as GrantedAuthority)
+        return mutableListOf(SimpleGrantedAuthority("ROLE_USER"))
     }
 
     override fun getPassword(): String {
