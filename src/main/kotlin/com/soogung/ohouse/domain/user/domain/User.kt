@@ -6,7 +6,7 @@ import javax.persistence.*
 
 
 @Entity
-@Table(name = "user_tbl")
+@Table(name = "tbl_user")
 class User(
     @Column(length = 50, nullable = false, unique = true)
     var email: String,
