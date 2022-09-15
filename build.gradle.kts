@@ -38,6 +38,7 @@ dependencies {
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+	implementation ("io.springfox:springfox-boot-starter:3.0.0")
 }
 
 tasks.withType<KotlinCompile> {
