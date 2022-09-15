@@ -10,8 +10,8 @@ class ProductDelivery(
     @Column(nullable = false)
     var price: Int,
 
-    @Column(nullable = false)
-    var freeShippingPrice: Int,
+    @Column(nullable = true)
+    var freeShippingPrice: Int? = 0,
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
