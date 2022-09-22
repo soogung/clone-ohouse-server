@@ -17,9 +17,9 @@ class CreateProductService(
 ) {
     @Transactional
     fun execute(request: CreateProductRequest) {
-        val product = productRepository.save(request.toEntity())
+        val delivery = productDeliveryRepository.save(request.delivery.toEntity())
+        val product = productRepository.save(request.toEntity(delivery))
         productImageRepository.saveAll(request.images.map { it.toEntity(product) })
-        productDeliveryRepository.save(request.delivery.toEntity(product))
         request.productOption.forEach { saveDetailProduct(it, product) }
     }
 

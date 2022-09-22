@@ -1,6 +1,7 @@
 package com.soogung.ohouse.domain.product.presentation.dto.request
 
 import com.soogung.ohouse.domain.product.domain.Product
+import com.soogung.ohouse.domain.product.domain.ProductDelivery
 import org.hibernate.validator.constraints.Length
 import javax.validation.Valid
 
@@ -21,11 +22,12 @@ data class CreateProductRequest(
     @field:Valid
     val delivery: ProductDeliveryRequest,
 ) {
-    fun toEntity(): Product {
+    fun toEntity(delivery: ProductDelivery): Product {
         return Product(
             name = name,
             isDiscount = isDiscount,
-            discountDegree = discountDegree
+            discountDegree = discountDegree,
+            delivery = delivery,
         )
     }
 }
