@@ -20,10 +20,10 @@ class Product(
     var delivery: ProductDelivery,
 
     @OneToMany(mappedBy = "product", cascade = [CascadeType.ALL])
-    val images: ArrayList<ProductImage> = arrayListOf(),
+    val images: List<ProductImage> = arrayListOf(),
 
     @OneToMany(mappedBy = "product", cascade = [CascadeType.ALL])
-    val options: ArrayList<ProductOption> = arrayListOf(),
+    val options: List<ProductOption> = arrayListOf(),
 
     @Column(name = "product_id")
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
