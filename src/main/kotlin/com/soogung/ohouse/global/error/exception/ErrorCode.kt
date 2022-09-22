@@ -13,4 +13,6 @@ enum class ErrorCode(
     USER_ALREADY_EXISTS(422, "사용자가 이미 존재합니다."),
     USER_NOT_FOUND(404, "사용자가 없습니다."),
     PASSWORD_MISMATCH(401, "비밀번호가 틀렸습니다."),
+
+    PRODUCT_NOT_FOUND(404, "상품이 없습니다."),
 }
