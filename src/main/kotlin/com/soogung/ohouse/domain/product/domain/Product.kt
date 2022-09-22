@@ -15,6 +15,16 @@ class Product(
     @Column(nullable = true)
     var discountDegree: Double? = null,
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_delivery_id", nullable = false)
+    var delivery: ProductDelivery,
+
+    @OneToMany(mappedBy = "product", cascade = [CascadeType.ALL])
+    val images: ArrayList<ProductImage> = arrayListOf(),
+
+    @OneToMany(mappedBy = "product", cascade = [CascadeType.ALL])
+    val options: ArrayList<ProductOption> = arrayListOf(),
+
     @Column(name = "product_id")
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
