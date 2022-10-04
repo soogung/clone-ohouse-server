@@ -15,4 +15,6 @@ enum class ErrorCode(
     PASSWORD_MISMATCH(401, "비밀번호가 틀렸습니다."),
 
     PRODUCT_NOT_FOUND(404, "상품이 없습니다."),
+
+    CART_NOT_FOUND(404, "해당 상품이 장바구니에 담겨있지 않습니다."),
 }
