@@ -1,11 +1,13 @@
 package com.soogung.ohouse.domain.cart.presentation
 
 import com.soogung.ohouse.domain.cart.presentation.dto.request.PutProductRequest
+import com.soogung.ohouse.domain.cart.presentation.dto.response.CartResponse
 import com.soogung.ohouse.domain.cart.service.PopDetailProductService
 import com.soogung.ohouse.domain.cart.service.PopProductService
 import com.soogung.ohouse.domain.cart.service.PutProductService
 import com.soogung.ohouse.domain.cart.service.QueryCartService
 import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,6 +23,10 @@ class CartController(
     private val popDetailProductService: PopDetailProductService,
     private val popProductService: PopProductService,
 ) {
+    @GetMapping
+    fun queryCart(): CartResponse {
+        return queryCartService.execute()
+    }
 
     @PostMapping
     fun putProduct(@RequestBody @Valid request: PutProductRequest) {

@@ -9,6 +9,9 @@ import org.springframework.data.jpa.repository.Query
 
 interface CartRepository: JpaRepository<Cart, Long> {
 
+    @Query("SELECT c FROM Cart c WHERE c.user = :user")
+    fun findCartByUser(user: User): List<Cart>
+
     @Query("SELECT c FROM Cart c WHERE c.user = :user AND c.detailProduct = :detailProduct")
     fun findCartByUserAndDetailProduct(user: User, detailProduct: DetailProduct): Cart?
 
