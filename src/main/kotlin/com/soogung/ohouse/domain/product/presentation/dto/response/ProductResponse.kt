@@ -7,20 +7,8 @@ data class ProductResponse(
     val name: String,
     val company: String,
     val isDiscount: Boolean,
-    val discountDegree: Double?,
+    val discountDegree: Int?,
     val mainImage: ProductImageResponse,
-) {
-
-    companion object {
-        fun of(product: Product): ProductResponse {
-            return ProductResponse(
-                id = product.id!!,
-                name = product.name,
-                company = product.company,
-                isDiscount = product.isDiscount,
-                discountDegree = product.discountDegree,
-                mainImage = ProductImageResponse.of(product.images[0])
-            )
-        }
-    }
-}
+    val price: Int,
+    val discountedPrice: Int?,
+)
