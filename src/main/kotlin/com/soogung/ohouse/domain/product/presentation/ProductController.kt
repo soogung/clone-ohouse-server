@@ -2,6 +2,7 @@ package com.soogung.ohouse.domain.product.presentation
 
 import com.soogung.ohouse.domain.product.presentation.dto.request.CreateProductRequest
 import com.soogung.ohouse.domain.product.presentation.dto.response.ProductDetailResponse
+import com.soogung.ohouse.domain.product.presentation.dto.response.ProductListResponse
 import com.soogung.ohouse.domain.product.presentation.dto.response.ProductResponse
 import com.soogung.ohouse.domain.product.service.CreateProductService
 import com.soogung.ohouse.domain.product.service.QueryProductDetailService
@@ -28,7 +29,7 @@ class ProductController(
     }
 
     @GetMapping
-    fun getProducts(pageable: Pageable): List<ProductResponse> {
+    fun getProducts(pageable: Pageable): ProductListResponse {
         return queryProductService.execute(pageable)
     }
 
