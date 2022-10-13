@@ -9,6 +9,9 @@ class Product(
     @Column(length = 30, nullable = false)
     var name: String,
 
+    @Column(length = 20, nullable = false)
+    var company: String,
+
     @Column(nullable = false)
     var isDiscount: Boolean,
 
