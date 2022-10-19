@@ -7,6 +7,7 @@ import com.soogung.ohouse.global.security.jwt.filter.JwtAuthenticationFilter
 import com.soogung.ohouse.global.security.jwt.filter.JwtExceptionFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -50,6 +51,7 @@ class SecurityConfig(
             .and()
             .authorizeRequests()
             .antMatchers("/auth/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/product/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin().disable();
