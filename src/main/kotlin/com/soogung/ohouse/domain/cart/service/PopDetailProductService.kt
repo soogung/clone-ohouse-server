@@ -9,15 +9,11 @@ import org.springframework.stereotype.Service
 @Service
 class PopDetailProductService(
     private val cartRepository: CartRepository,
-    private val cartFacade: CartFacade,
     private val userFacade: UserFacade,
-    private val productFacade: ProductFacade,
 ) {
     fun execute(id: Long) {
-        cartRepository.delete(
-            cartFacade.findCartByUserAndDetailProduct(
-                userFacade.getCurrentUser(), productFacade.findDetailProductById(id)
-            )
+        cartRepository.deleteCartByUserAnAndDetailProduct(
+            userFacade.getCurrentUser(), id
         )
     }
 

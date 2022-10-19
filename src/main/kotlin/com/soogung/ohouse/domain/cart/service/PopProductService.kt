@@ -4,18 +4,18 @@ import com.soogung.ohouse.domain.cart.domain.repository.CartRepository
 import com.soogung.ohouse.domain.product.facade.ProductFacade
 import com.soogung.ohouse.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class PopProductService(
     private val cartRepository: CartRepository,
     private val userFacade: UserFacade,
-    private val productFacade: ProductFacade,
 ) {
+
+    @Transactional
     fun execute(id: Long) {
-        cartRepository.deleteAll(
-            cartRepository.findCartsByUserAndProduct(
-                userFacade.getCurrentUser(), productFacade.findProductById(id)
-            )
+        cartRepository.deleteCartsByUserAndProduct(
+                userFacade.getCurrentUser(), id
         )
     }
 }
