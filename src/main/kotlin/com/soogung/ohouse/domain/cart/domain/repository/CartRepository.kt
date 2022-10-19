@@ -7,6 +7,7 @@ import com.soogung.ohouse.domain.user.domain.User
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
+import org.springframework.data.repository.query.Param
 import org.springframework.transaction.annotation.Transactional
 
 interface CartRepository: JpaRepository<Cart, Long> {
@@ -26,4 +27,13 @@ interface CartRepository: JpaRepository<Cart, Long> {
     @Transactional
     @Query("DELETE FROM Cart c WHERE c.user = :user AND c.detailProduct.id = :detailProductId")
     fun deleteCartByUserAnAndDetailProduct(user: User, detailProductId: Long);
+
+    @Modifying(clearAutomatically = true)
+    @Query("UPDATE Cart c SET c.quantity = :quantity WHERE c.id = :cartId")
+    fun updateCartQuantityByUserAndDetailProduct(quantity: Int, cartId: Long);
+
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT INTO tbl_cart (quantity, product_id, product_option_id, detail_product_id, user_id) VALUES (:#{#c.quantity},:#{#c.product.id},:#{#c.productOption.id},:#{#c.detailProduct.id},:#{#c.user.id})", nativeQuery = true)
+    fun save(@Param("c") cart: Cart);
 }

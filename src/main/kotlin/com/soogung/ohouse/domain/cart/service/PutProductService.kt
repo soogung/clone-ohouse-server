@@ -1,6 +1,5 @@
 package com.soogung.ohouse.domain.cart.service
 
-import com.soogung.ohouse.domain.cart.domain.Cart
 import com.soogung.ohouse.domain.cart.domain.repository.CartRepository
 import com.soogung.ohouse.domain.cart.presentation.dto.request.PutProductRequest
 import com.soogung.ohouse.domain.product.facade.ProductFacade
@@ -25,7 +24,9 @@ class PutProductService(
         if (cart == null) {
             cartRepository.save(request.toEntity(product, user))
         } else {
-            cart.quantity = request.quantity
+            cartRepository.updateCartQuantityByUserAndDetailProduct(
+                request.quantity, cart.id!!
+            )
         }
     }
 }
