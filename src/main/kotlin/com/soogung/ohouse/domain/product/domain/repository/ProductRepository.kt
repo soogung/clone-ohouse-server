@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.Query
 
 interface ProductRepository: JpaRepository<Product, Long> {
 
-    @Query("SELECT p FROM Product p WHERE p.id = :id")
+    @Query("SELECT p FROM Product p JOIN FETCH p.options JOIN FETCH p.delivery WHERE p.id = :id")
     fun findProductById(id: Long): Product?
 
-    @Query("SELECT p FROM Product p ORDER BY function('RAND')")
+    @Query("SELECT p FROM Product p JOIN FETCH p.images ORDER BY function('RAND')")
     fun findRandomProducts(pageable: Pageable): List<Product>
 }
