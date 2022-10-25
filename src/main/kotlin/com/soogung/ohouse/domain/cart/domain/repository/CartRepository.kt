@@ -34,6 +34,8 @@ interface CartRepository: JpaRepository<Cart, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO tbl_cart (quantity, product_id, product_option_id, detail_product_id, user_id) VALUES (:#{#c.quantity},:#{#c.product.id},:#{#c.productOption.id},:#{#c.detailProduct.id},:#{#c.user.id})", nativeQuery = true)
+    @Query(value = "INSERT INTO tbl_cart (quantity, product_id, product_option_id, detail_product_id, user_id) " +
+        "VALUES (:#{#c.quantity},:#{#c.product.id},:#{#c.productOption.id},:#{#c.detailProduct.id},:#{#c.user.id})",
+        nativeQuery = true)
     fun save(@Param("c") cart: Cart);
 }

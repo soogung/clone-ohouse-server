@@ -20,6 +20,7 @@ interface UserRepository: JpaRepository<User, Long> {
 
     @Modifying
     @Transactional
-    @Query("INSERT INTO tbl_user (email, password, nickname, grade) VALUES (:#{#u.email},:#{#u.password},:#{#u.nickname},:#{#u.grade.toString()})", nativeQuery = true)
+    @Query("INSERT INTO tbl_user (email, password, nickname, grade) " +
+        "VALUES (:#{#u.email},:#{#u.password},:#{#u.nickname},:#{#u.grade.toString()})", nativeQuery = true)
     fun save(@Param("u") user: User)
 }
