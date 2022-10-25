@@ -7,10 +7,10 @@ import javax.persistence.*
 @Table(name = "tbl_order_block")
 class OrderBlock(
     @Column(nullable = false)
-    var totalPrice: Int,
+    var totalPrice: Int? = 0,
 
     @Column(nullable = false)
-    var deliveryPrice: Int,
+    var deliveryPrice: Int? = 0,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "user_id")
@@ -20,4 +20,7 @@ class OrderBlock(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 ) {
+    fun setPrice(totalPrice: Int) {
+        this.totalPrice = totalPrice
+    }
 }

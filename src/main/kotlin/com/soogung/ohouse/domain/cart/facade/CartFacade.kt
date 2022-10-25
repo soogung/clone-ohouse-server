@@ -13,6 +13,12 @@ class CartFacade(
     private val cartRepository: CartRepository,
 ) {
     @Transactional(readOnly = true)
+    fun findCartById(id: Long): Cart {
+        return cartRepository.findCartById(id)
+            ?: throw CartNotFoundException.EXCEPTION
+    }
+
+    @Transactional(readOnly = true)
     fun findCartByUserAndDetailProduct(user: User, detailProduct: DetailProduct): Cart {
         return cartRepository.findCartByUserAndDetailProduct(user, detailProduct)
             ?: throw CartNotFoundException.EXCEPTION

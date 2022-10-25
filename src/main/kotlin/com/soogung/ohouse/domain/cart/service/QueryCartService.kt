@@ -41,6 +41,7 @@ class QueryCartService(
 
     private fun setCartDetailProduct(products: List<Cart>): List<CartDetailProductResponse> {
         return products.map { CartDetailProductResponse(
+            cartId = it.id!!,
             quantity = it.quantity,
             productName = it.detailProduct.name
         ) }

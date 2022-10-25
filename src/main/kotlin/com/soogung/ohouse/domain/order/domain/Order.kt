@@ -18,6 +18,9 @@ class Order(
     @Column(nullable = false)
     var quantity: Int,
 
+    @Column(nullable = false)
+    var price: Int,
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null

@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.Transactional
 
 interface CartRepository: JpaRepository<Cart, Long> {
 
+    @Query("SELECT c FROM Cart c WHERE c.id = :id")
+    fun findCartById(id: Long): Cart?
+
     @Query("SELECT c FROM Cart c WHERE c.user = :user")
     fun findCartByUser(user: User): List<Cart>
 
